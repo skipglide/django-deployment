@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}Home Page{% endblock %}
 
 {% block content %}
     <h1>Welcome to My Website</h1>
     <p>This is the home page content.</p>
+    The count is {{ count }}
 {% endblock %}

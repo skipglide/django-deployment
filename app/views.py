@@ -1,5 +1,15 @@
 from django.shortcuts import render
 
-# Create your views here.
+from .models import Counter
+
 def home(request):
-    return render(request, "app/home.html", {})
+    counter = Counter.objects.last()
+    if not counter:
+        counter = Counter.objects.create()
+    
+    counter.count += 1
+    counter.save()
+    counter = {
+        "count": counter.count,
+    }
+    return render(request, "app/home.html", counter)
