@@ -18,18 +18,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           script: |
-            cd /app/
-            . env/bin/activate
-            supervisorctl stop all #THIS DOESN'T STOP THE PROCESS CORRECTLY
-            cd ~/deploy/django-deployment/
-            git pull
-            rm -rf /app/django-deployment/
-            rm -rf /app/config/
-            rm -rf /app/scripts/
-            cp -r config/ /app/
-            cp -r scripts/ /app/
-            cp -r ../django-deployment /app/
-            cd /app/
+            rm -rf /root/deploy/
 
         - name: Deploy to Digital Ocean droplet via SCP action
           uses: appleboy/ssh-action@v1.0.3
