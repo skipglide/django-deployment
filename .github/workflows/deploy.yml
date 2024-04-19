@@ -33,13 +33,12 @@ jobs:
             rm -rf /app/django-deployment
             rm -rf /app/config
             rm -rf /app/scripts
-            rm requirements.txt
 
             echo -e "\n>>> Copying new files"
             cp -r /root/deploy/django-deployment /app/
-            cp -r /root/deploy/django-deployment/config /app/
-            cp -r /root/deploy/django-deployment/scripts /app/
-            cp /root/deploy/django-deployment/requirements.txt /app/
+            mv /root/deploy/django-deployment/config /app/
+            mv /root/deploy/django-deployment/scripts /app/
+            mv /root/deploy/django-deployment/requirements.txt /app/
 
             echo -e "\n>>> Installing Python packages"
             pip install -r /app/requirements.txt
