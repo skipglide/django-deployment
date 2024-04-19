@@ -9,5 +9,15 @@
 {% block content %}
     <h1>Welcome to My Website</h1>
     <p>This is the home page content.</p>
-    The count is {{ count }}
+    <div style="max-width: 500px">
+    <img src="{{ post.image.url }}" style="max-height: 50vh;">
+    </div>
+    <p>The count is {{ count }}</p>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <input type="file" name="image" id="image" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
 {% endblock %}
