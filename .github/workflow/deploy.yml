@@ -11,32 +11,47 @@ jobs:
       - name: Checkout the repo
         uses: actions/checkout@main
 
-      - name: Prep deployment with SSH Action
+      - name: Deployment with SSH Action
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           script: |
+            set -e
+
+            echo -e "\n>>> Updating deploy folder"
+            cd /root/deploy/django-deployment/
+            git pull
+
+            echo -e "\n>>> Stopping Gunicorn"
             cd /app/
             . env/bin/activate
-            supervisorctl stop all #THIS DOESN'T STOP THE PROCESS CORRECTLY
-            cd ~/deploy/django-deployment/
-            git pull
-            rm -rf /app/django-deployment/
-            rm -rf /app/config/
-            rm -rf /app/scripts/
-            cp -r config/ /app/
-            cp -r scripts/ /app/
-            cp -r ../django-deployment /app/
-            cd /app/
+            ./scripts/super.sh stop gunicorn
 
-        - name: Deploy to Digital Ocean droplet via SCP action
-          uses: appleboy/ssh-action@v1.0.3
-          with:
-            host: ${{ secrets.HOST }}
-            username: ${{ secrets.USERNAME }}
-            password: ${{ secrets.PASSWORD }}
-            envs: GITHUB_WORKSPACE
-            script: |
-              rm -rf /root/deploy/
+            echo -e "\n>>> Deleting old files"
+            rm -rf /app/django-deployment
+            rm -rf /app/config
+            rm -rf /app/scripts
+            rm requirements.txt
+
+            echo -e "\n>>> Copying new files"
+            cp -r /root/deploy/django-deployment /app/
+            cp -r /root/deploy/django-deployment/config /app/
+            cp -r /root/deploy/django-deployment/scripts /app/
+            cp /root/deploy/django-deployment/requirements.txt /app/
+
+            echo -e "\n>>> Installing Python packages"
+            pip install -r /app/requirements.txt
+
+            echo -e "\n>>> Running Django migrations"
+            /app/django-deployment/manage.py migrate
+
+            echo -e "\n>>> Collecting static files"
+            /app/django-deployment/manage.py collectstatic
+
+            echo -e "\n>>> Re-reading Supervisord config"
+            /app/scripts/super.sh reread
+
+            echo -e "\n>>> Starting Gunicorn"
+            /app/scripts/super.sh start gunicorn
