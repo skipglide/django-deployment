@@ -1,0 +1,28 @@
+name: oops
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@main
+
+      - name: Deployment with SSH Action
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          script: |
+            set -e
+            cd /root/deploy
+            rm -r django-deployment
+            git clone https://github.com/skipglide/django-deployment.git
+            rm -r /app/config
+            rm -r /app/scripts
+            rm -r /app/django-deployment
+            cp /django-deployment/ /app/
