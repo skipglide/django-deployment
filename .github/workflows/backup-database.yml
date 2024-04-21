@@ -1,0 +1,25 @@
+name: backup
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Bakup with SSH Action
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          script: |
+            set -e
+
+            echo -e "\n >>> Backing up database on $SERVER"
+            TIME=$(date "+%s")
+            DBNAME="db.$TIME.sqlite3"
+            
+            mkdir -p /root/backups/
+            cp /app/db.sqlite3 /root/backups/$DBNAME
