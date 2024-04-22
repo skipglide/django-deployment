@@ -28,7 +28,7 @@ jobs:
             apt-get -qq upgrade
 
             echo -e "\n>>> Installing apt packages"
-            apt-get -qq install python3-pip3 dos2unix tree
+            apt-get -qq install python3-pip dos2unix tree
 
             echo -e "\n>>> Installing virtualenv"
             pip3 install virtualenv
