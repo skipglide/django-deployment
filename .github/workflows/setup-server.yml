@@ -1,0 +1,56 @@
+name: setup
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Bakup with SSH Action
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST_2 }}
+          username: ${{ secrets.USERNAME }}
+          passphrase: ${{ secrets.PASSPHRASE }}
+          script: |
+            set -e
+
+            SERVER=${{ secrets.HOST }}
+            DJANGO_SETTINGS_MODULE="dploy.settings.prod"
+
+            if [[ -z "$1" ]]
+            then
+              echo "ERROR: No value set for DJANGO_SECRET_KEY"
+              exit 1
+            fi
+
+            echo -e "\n>>> Setting up $SERVER"
+            apt-get -qq update
+
+            echo -e "\n>>> Upgrading apt packages"
+            apt-get -qq upgrade
+
+            echo -e "\n>>> Installing apt packages"
+            apt-get -qq install python3-pip3 dos2unix tree
+
+            echo -e "\n>>> Installing virtualenv"
+            pip3 install virtualenv
+
+            echo -e "\n>>> Setting up project folder"
+            mkdir -p /app/logs
+
+            echo -e "\n>>> Creating our virtualenv"
+            if [[ ! -d "/app/env" ]]
+            then
+              virtualenv -p python3 /app/env
+            else
+              echo ">>> Skipping virtualenv creation - already present"
+            fi
+
+            echo -e "\n>>> Setting system enviromental variables"
+            DJANGO_SETTINGS_MODULE="dploy.settings.prod"
+            DJANGO_SECRET_KEY="${{ secrets.SECRET_KEY }}"
+
+            echo -e "\n>>> Done setting up $SERVER"
