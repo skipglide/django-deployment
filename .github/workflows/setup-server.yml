@@ -8,8 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Bakup with SSH Action
-        uses: appleboy/ssh-action@v1.0.3
+      - name: Setup with SSH Action
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST_2 }}
           username: ${{ secrets.USERNAME }}
