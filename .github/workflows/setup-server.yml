@@ -13,7 +13,7 @@ jobs:
         with:
           host: ${{ secrets.HOST_2 }}
           username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.PASSPHRASE }}
+          key: ${{ secrets.PASSPHRASE }}
           script: |
             set -e
 
