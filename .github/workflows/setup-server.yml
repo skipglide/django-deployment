@@ -20,13 +20,6 @@ jobs:
             set -e
 
             SERVER=${{ secrets.HOST }}
-            DJANGO_SETTINGS_MODULE="dploy.settings.prod"
-            DJANGO_SECRET_KEY=${{ secrets.SECRET_KEY }}
-            if [[ -z "$1" ]]
-            then
-              echo "ERROR: No value set for DJANGO_SECRET_KEY"
-              exit 1
-            fi
 
             echo -e "\n>>> Setting up $SERVER"
             apt-get -qq update
@@ -52,7 +45,7 @@ jobs:
             fi
 
             echo -e "\n>>> Setting system enviromental variables"
-            DJANGO_SETTINGS_MODULE="dploy.settings.prod"
-            DJANGO_SECRET_KEY="${{ secrets.SECRET_KEY }}"
+            export DJANGO_SETTINGS_MODULE="dploy.settings.prod"
+            export DJANGO_SECRET_KEY="${{ secrets.SECRET_KEY }}"
 
             echo -e "\n>>> Done setting up $SERVER"
