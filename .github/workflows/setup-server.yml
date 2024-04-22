@@ -13,7 +13,7 @@ jobs:
         with:
           host: ${{ secrets.HOST_2 }}
           username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          key: ${{ secrets.PASSPHRASE }}
           port: ${{ secrets.PORT }}
           script: |
             set -e
