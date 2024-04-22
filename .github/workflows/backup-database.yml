@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
+  backup:
     runs-on: ubuntu-latest
     
     steps:
@@ -20,6 +20,6 @@ jobs:
             echo -e "\n >>> Backing up database on $SERVER"
             TIME=$(date "+%s")
             DBNAME="db.$TIME.sqlite3"
-            
+
             mkdir -p /root/backups/
             cp /app/db.sqlite3 /root/backups/$DBNAME
