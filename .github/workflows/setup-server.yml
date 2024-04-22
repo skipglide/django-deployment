@@ -21,7 +21,7 @@ jobs:
 
             SERVER=${{ secrets.HOST }}
             DJANGO_SETTINGS_MODULE="dploy.settings.prod"
-
+            DJANGO_SECRET_KEY=${{ secrets.SECRET_KEY }}
             if [[ -z "$1" ]]
             then
               echo "ERROR: No value set for DJANGO_SECRET_KEY"
