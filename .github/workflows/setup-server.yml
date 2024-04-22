@@ -13,6 +13,7 @@ jobs:
         with:
           host: ${{ secrets.HOST_2 }}
           username: ${{ secrets.USERNAME }}
+          passphrase: @{{ secrets.PASSPHRASE }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.PORT }}
           script: |
