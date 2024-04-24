@@ -36,9 +36,9 @@ jobs:
 
             echo -e "\n>>> Copying new files"
             cp -r /root/deploy/django-deployment /app/
-            mv /root/deploy/django-deployment/config /app/
-            mv /root/deploy/django-deployment/scripts /app/
-            mv /root/deploy/django-deployment/requirements.txt /app/
+            mv /app/django-deployment/config /app/
+            mv /app/django-deployment/scripts /app/
+            mv /app/django-deployment/requirements.txt /app/
 
             echo -e "\n>>> Installing Python packages"
             pip install -r /app/requirements.txt
