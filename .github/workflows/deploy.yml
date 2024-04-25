@@ -9,7 +9,7 @@ jobs:
     
     steps:
       - name: Checkout the repo
-        uses: actions/checkout@reverse
+        uses: actions/checkout@main
 
       - name: Deployment with SSH Action
         uses: appleboy/ssh-action@v1.0.3
