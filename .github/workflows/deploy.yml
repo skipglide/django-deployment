@@ -33,6 +33,7 @@ jobs:
             rm -rf /app/django-deployment
             rm -rf /app/config
             rm -rf /app/scripts
+            rm -rf /app/docker
 
             echo -e "\n>>> Copying new files"
             cp -r /root/deploy/django-deployment /app/
