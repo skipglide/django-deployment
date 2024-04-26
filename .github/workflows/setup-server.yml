@@ -19,7 +19,7 @@ jobs:
           script: |
             set -e
 
-            SERVER=${{ secrets.HOST }}
+            SERVER=${{ secrets.HOST_2 }}
 
             echo -e "\n>>> Setting up $SERVER"
             apt-get -qq update
