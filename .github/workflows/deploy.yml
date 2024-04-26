@@ -20,6 +20,10 @@ jobs:
           script: |
             set -e
 
+            echo -e "\n>>> Updating deploy folder"
+            cd /root/deploy/django-deployment/
+            git pull
+
             echo -e "\n>>> Stopping Gunicorn"
             cd /app/
             . env/bin/activate
@@ -29,8 +33,7 @@ jobs:
             rm -rf /app/django-deployment /app/config /app/scripts /app/dockerfiles
 
             echo -e "\n>>> Copying new files"
-            ls ${{ github.workspace}}}
-            cp -r ${{ github.workspace}}} /app/
+            cp -r /root/deploy/django-deployment /app/
             mv /app/django-deployment/config /app/
             mv /app/django-deployment/scripts /app/
             mv /app/django-deployment/dockerfiles /app/
