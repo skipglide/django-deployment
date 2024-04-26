@@ -2,7 +2,10 @@ version: '3'
 services:
  nginx:
     image: nginx:latest
+    container_name: nginx
     ports:
       - "80:80"
     volumes:
       - /app/config/nginx.conf:/etc/nginx/nginx.conf:ro
+      - /app/media/:/app/media/
+    docker compose extra_hosts: - "host.docker.internal:host-gateway"
