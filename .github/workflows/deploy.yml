@@ -38,6 +38,7 @@ jobs:
             cp -r /root/deploy/django-deployment /app/
             mv /app/django-deployment/config /app/
             mv /app/django-deployment/scripts /app/
+            mv /app/django-deployment/docker /app/
             mv /app/django-deployment/requirements.txt /app/
 
             echo -e "\n>>> Installing Python packages"
