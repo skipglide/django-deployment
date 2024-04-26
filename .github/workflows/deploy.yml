@@ -30,14 +30,13 @@ jobs:
             ./scripts/super.sh stop gunicorn
 
             echo -e "\n>>> Deleting old files"
-            rm -rf /app/django-deployment
-            rm -rf /app/config
-            rm -rf /app/scripts
+            rm -rf /app/django-deployment /app/config /app/scripts /app/dockerfiles
 
             echo -e "\n>>> Copying new files"
             cp -r /root/deploy/django-deployment /app/
             mv /app/django-deployment/config /app/
             mv /app/django-deployment/scripts /app/
+            mv /app/django-deployment/dockerfiles /app/
             mv /app/django-deployment/requirements.txt /app/
 
             echo -e "\n>>> Installing Python packages"

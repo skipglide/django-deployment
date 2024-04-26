@@ -1,0 +1,29 @@
+name: docker
+
+on:
+  workflow_dispatch:
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@main
+
+      - name: Deployment with SSH Action
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          script: |
+            set -e
+
+            echo -e "\n>>> Stopping docker containers"
+            cd /app/docker
+            docker stop nginx
+
+            echo -e "\n>>> Redeploying docker containers"
+            docker rm nginx
+            docker up compose -d
