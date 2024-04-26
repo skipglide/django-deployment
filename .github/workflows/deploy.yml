@@ -23,6 +23,7 @@ jobs:
             echo -e "\n>>> Updating deploy folder"
             cd /root/deploy/django-deployment/
             git pull
+            echo ${{ github.repository }}
 
             echo -e "\n>>> Stopping Gunicorn"
             cd /app/
