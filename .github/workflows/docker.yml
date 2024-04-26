@@ -21,7 +21,7 @@ jobs:
             set -e
 
             echo -e "\n>>> Stopping docker containers"
-            cd /app/
+            cd /app/docker
             docker stop nginx
 
             echo -e "\n>>> Redeploying docker containers"
