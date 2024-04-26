@@ -22,3 +22,8 @@ jobs:
 
             echo -e "\n>>> Stopping docker containers"
             cd /app/
+            docker stop nginx
+
+            echo -e "\n>>> Redeploying docker containers"
+            docker rm nginx
+            docker up compose -d
