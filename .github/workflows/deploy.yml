@@ -33,13 +33,13 @@ jobs:
             rm -rf /app/django-deployment
             rm -rf /app/config
             rm -rf /app/scripts
-            rm -rf /app/docker
+            rm -rf /app/dockerfiles
 
             echo -e "\n>>> Copying new files"
             cp -r /root/deploy/django-deployment /app/
             mv /app/django-deployment/config /app/
             mv /app/django-deployment/scripts /app/
-            mv /app/django-deployment/docker /app/
+            mv /app/django-deployment/dockerfiles /app/
             mv /app/django-deployment/requirements.txt /app/
 
             echo -e "\n>>> Installing Python packages"
