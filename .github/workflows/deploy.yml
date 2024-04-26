@@ -29,6 +29,7 @@ jobs:
             rm -rf /app/django-deployment /app/config /app/scripts /app/dockerfiles
 
             echo -e "\n>>> Copying new files"
+            ls $GITHUB_WORKSPACE
             cp -r $GITHUB_WORKSPACE /app/
             mv /app/django-deployment/config /app/
             mv /app/django-deployment/scripts /app/
