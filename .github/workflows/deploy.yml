@@ -21,8 +21,9 @@ jobs:
             set -e
 
             echo -e "\n>>> Updating deploy folder"
-            cd /root/deploy/django-deployment/
-            git pull
+            cd /root/deploy/
+            rm -r /django-deployment
+            git clone https://github.com/skipglide/django-deployment.git
             echo ${{ github.repository }}
 
             echo -e "\n>>> Stopping Gunicorn"
