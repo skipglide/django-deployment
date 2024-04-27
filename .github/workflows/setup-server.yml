@@ -60,5 +60,8 @@ jobs:
             else
               echo ">>> Skipping DJANGO_SECRET_KEY - already present"
             fi
+
+            echo -e ">>> Cloning repository"
+            git clone https://github.com/skipglide/django-deployment.git
             
             echo -e "\n>>> Done setting up $SERVER"
