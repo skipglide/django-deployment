@@ -7,14 +7,17 @@
 {% block title %}Crusties{% endblock %}
 
 {% block content %}
-    <h1>Welcome to The Thunderdome, BITCH.</h1>
-    <p>Walk into a sperm bank. Feel the power.</p>
+    <h1>Janus Vault</h1>
+    <p>Free Image Hosting</p>
     <div style="max-width: 500px">
+    
     <img src="{{ post.image.url }}" style="max-height: 50vh;">
+    
     <video controls style="max-height: 50vh;">
         <source src="{{ post.image.url }}" type="video/mp4">
         Your browser does not support the video tag.
     </video>
+    
     </div>
     <p>The count is {{ count }}</p>
     <form method="POST" enctype="multipart/form-data">
