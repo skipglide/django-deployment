@@ -64,7 +64,7 @@ jobs:
             git clone https://github.com/skipglide/django-deployment.git
             
             echo -e ">>> Copying to app folder"
-            cp /root/deploy/django-deployment /app/
+            cp -r /root/deploy/django-deployment /app/
             mv /app/django-deployment/config /app/
             mv /app/django-deployment/scripts /app/
             mv /app/django-deployment/dockerfiles /app/
