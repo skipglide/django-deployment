@@ -5,6 +5,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Janus Vault">
+    <meta property="og:description" content="Pass Thru">
+    <meta property="og:image" content="{{ vault.image.url }}">
+    <meta property="og:url" content="{{ request.build_absolute_url }}">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" type="text/css" href="{% block source %}{% endblock %}">
 <body>
