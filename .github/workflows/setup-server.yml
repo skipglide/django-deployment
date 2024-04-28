@@ -62,6 +62,23 @@ jobs:
             fi
 
             echo -e ">>> Cloning repository"
+            mkdir /root/deploy
+            cd /root/deploy
             git clone https://github.com/skipglide/django-deployment.git
             
+            echo -e ">>> Copying to app folder"
+            cp /root/deploy/django-deploy/ /app/
+            mv /app/django-deployment/config /app/
+            mv /app/django-deployment/scripts /app/
+            mv /app/django-deployment/dockerfiles /app/
+            mv /app/django-deployment/requirements.txt /app/
+
+            echo -e ">>> Starting virtual enviornment"
+            cd /app/
+            . /app/env/bin/activate
+
+            echo -e ">>> Starting supervisord"
+            
+
+
             echo -e "\n>>> Done setting up $SERVER"
