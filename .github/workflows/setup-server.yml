@@ -59,7 +59,7 @@ jobs:
             fi
 
             echo -e ">>> Cloning repository"
-            mkdir /root/deploy
+            mkdir -p /root/deploy
             cd /root/deploy
             git clone https://github.com/skipglide/django-deployment.git
             
