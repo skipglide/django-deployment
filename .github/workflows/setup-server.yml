@@ -73,12 +73,20 @@ jobs:
             mv /app/django-deployment/dockerfiles /app/
             mv /app/django-deployment/requirements.txt /app/
 
-            echo -e ">>> Starting virtual enviornment"
+            echo -e "\n>>> Installing Python packages"
             cd /app/
-            . /app/env/bin/activate
+            . env/bin/activate
+            pip install -r /app/requirements.txt
+
+            echo -e "\n>>> Running Django migrations"
+            pushd django-deployment
+            ./manage.py migrate
+
+            echo -e "\n>>> Collecting static files"
+            ./manage.py collectstatic
+            popd
 
             echo -e ">>> Starting supervisord"
-            
-
+            supervisord -c config/supervisord.conf
 
             echo -e "\n>>> Done setting up $SERVER"
