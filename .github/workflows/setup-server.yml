@@ -32,9 +32,6 @@ jobs:
             echo -e "\n>>> Installing apt packages"
             apt-get -qq install python3-pip dos2unix tree
 
-            echo -e "\n>>> Installing virtualenv"
-            pip3 install virtualenv
-
             echo -e "\n>>> Setting up project folder"
             mkdir -p /app/logs
 
