@@ -53,7 +53,7 @@ jobs:
 
             if [[ "\$DJANGO_SECRET_KEY" != "$DJANGO_SECRET_KEY" ]]
             then
-              echo DJANGO_SECRET_KEY >> /etc/environment
+              echo DJANGO_SECRET_KEY="${{ secrets.SECRET_KEY }}" >> /etc/environment
             else
               echo ">>> Skipping DJANGO_SECRET_KEY - already present"
             fi
