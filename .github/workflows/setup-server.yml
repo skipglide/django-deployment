@@ -30,7 +30,7 @@ jobs:
             apt-get -qq upgrade
 
             echo -e "\n>>> Installing apt packages"
-            apt-get -qq install python3-pip dos2unix tree
+            apt-get -qq install python3-pip dos2unix tree python3.11-venv
 
             echo -e "\n>>> Setting up project folder"
             mkdir -p /app/logs
