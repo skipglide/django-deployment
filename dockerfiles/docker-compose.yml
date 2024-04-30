@@ -10,3 +10,9 @@ services:
       - /app/media/:/app/media/
     extra_hosts:
       - "host.docker.internal:host-gateway"
+
+ redis:
+    image: redis:latest
+    container_name: redis
+    ports:
+      - "6379:6379"
