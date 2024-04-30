@@ -7,9 +7,11 @@
 {% block title %}Janus Vault{% endblock %}
 
 {% block content %}
-    <h1>Janus Vault</h1>
-    <p>Free Image Hosting</p>
-
+    <div class="hero">
+        <h1>Janus Vault</h1>
+        <p>Free Image Hosting</p>
+    </div>
+    
     <article>
         {% if {{ post.image.url }} %}
             <img src="{{ post.image.url }}">
