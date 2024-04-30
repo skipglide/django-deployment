@@ -9,7 +9,7 @@
 {% block content %}
     <h1>Janus Vault</h1>
     <p>Free Image Hosting</p>
-    <div class="container" style="max-width: 500px">
+
     <article>
 
             <img src="{{ post.image.url }}">
@@ -21,7 +21,7 @@
 
         <footer>Footer</footer>
     </article>    
-    </div>
+
     <p>The count is {{ count }}</p>
     <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
