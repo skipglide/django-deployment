@@ -57,3 +57,10 @@ body {
     align-items: center;
 }
 */
+
+.hero {
+    background-color: lightblue; /* Change this to whatever color you want */
+    color: #fff; /* Text color */
+    padding: 50px 0; /* Adjust the top and bottom padding as needed */
+    text-align: center; /* Center the content */
+  }
