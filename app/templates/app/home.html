@@ -11,14 +11,16 @@
     <p>Free Image Hosting</p>
 
     <article>
-
+        {% if true %}
             <img src="{{ post.image.url }}">
-    
+        {% elif true %}
             <video controls>
                 <source src="{{ post.image.url }}" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
-
+        {% elseif %}
+            <p>Yoooooo?</p>
+        {% endif %}
         <footer>Footer</footer>
     </article>    
 
