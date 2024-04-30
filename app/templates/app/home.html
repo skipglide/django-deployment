@@ -11,7 +11,7 @@
     <p>Free Image Hosting</p>
 
     <article>
-        {% if true %}
+        {% if {{ post.image.url }} %}
             <img src="{{ post.image.url }}">
         {% elif true %}
             <video controls>
