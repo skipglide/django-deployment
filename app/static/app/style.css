@@ -58,9 +58,47 @@ body {
 }
 */
 
-.hero {
-    background-color: lightblue; /* Change this to whatever color you want */
-    color: #fff; /* Text color */
-    padding: 50px 0; /* Adjust the top and bottom padding as needed */
-    text-align: center; /* Center the content */
-  }
+/* Media query for screens smaller than 768px */
+@media (max-width: 767px) {
+    body {
+        font-size: 14px;
+    }
+    .container {
+        padding: 0 10px;
+    }
+}
+
+/* Media query for screens less than 576px */
+@media (min-width: 576px) {
+    .container {
+        max-width: 100%;
+    }
+}
+
+/* Media query for screens between 576px and 768px */
+@media (min-width: 576px) and (max-width: 768px) {
+    .container {
+        max-width: 510px;
+    }
+}
+
+/* Media query for screens between 768px and 1023px */
+@media (min-width: 576px) and (max-width: 768px) {
+    .container {
+        max-width: 510px;
+    }
+}
+
+/* Media query for screens between 768px and 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .container {
+        max-width: 720px;
+    }
+}
+
+/* Media query for screens larger than 1023px */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 960px;
+    }
+}
