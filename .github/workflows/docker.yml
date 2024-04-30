@@ -21,7 +21,7 @@ jobs:
             set -e
 
             echo -e "\n>>> Stopping docker containers"
-            cd /app/docker
+            cd /app/dockerfiles
             docker container kill $(docker container ls -q)
 
             echo -e "\n>>> Redeploying docker containers"
