@@ -15,7 +15,7 @@
     <article>
         {% if {{ post.image.url }} %}
             <img src="{{ post.image.url }}">
-        {% elif true %}
+        {% elif {{ post.image.url }} %}
             <video controls>
                 <source src="{{ post.image.url }}" type="video/mp4">
                 Your browser does not support the video tag.
