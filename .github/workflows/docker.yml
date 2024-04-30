@@ -26,4 +26,4 @@ jobs:
 
             echo -e "\n>>> Redeploying docker containers"
             docker rm $(docker ps --filter status=exited -q)
-            docker up compose -d
+            docker compose up -d
