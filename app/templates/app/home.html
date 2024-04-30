@@ -12,7 +12,8 @@
         <p>Free Image Hosting</p>
     </div>
 
-    <article style="display: flex; justify-content: center; align-items: center;">
+    <article>
+        <div style="display: flex; justify-content: center; align-items: center;">
         {% if post.image %}
             <img src="{{ post.image.url }}">
         {% elif post.image %}
@@ -23,6 +24,7 @@
         {% else %}
             <p>Yoooooo?</p>
         {% endif %}
+        </div>
         <footer>Footer</footer>
     </article>    
 
