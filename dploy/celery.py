@@ -11,7 +11,7 @@ app.autodiscover_tasks()
 
 app.conf.beat_schedule = {
     'restart_counter_every_minute': {
-        'task': 'posts.tasks.restart_counter',
+        'task': 'app.tasks.restart_counter',
         'schedule': crontab(minute='*/1'),  # Runs every minute
     },
 }
