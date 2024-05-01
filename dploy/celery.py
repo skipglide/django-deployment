@@ -10,8 +10,8 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 app.autodiscover_tasks()
 
 app.conf.beat_schedule = {
-    'restart_counter_every_day': {
+    'restart_counter_every_minute': {
         'task': 'posts.tasks.restart_counter',
-        'schedule': crontab(hour = '0'),
+        'schedule': crontab(minute='*/1'),  # Runs every minute
     },
 }
