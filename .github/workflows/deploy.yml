@@ -52,6 +52,7 @@ jobs:
 
             echo -e "\n>>> Re-reading Supervisord config"
             /app/scripts/super.sh reread
+            /app/scripts/super.sh update
 
             echo -e "\n>>> Starting Gunicorn"
             /app/scripts/super.sh start gunicorn
