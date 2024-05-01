@@ -9,9 +9,17 @@ app = Celery('dploy')
 app.config_from_object('django.conf:settings', namespace='CELERY')
 app.autodiscover_tasks()
 
-app.conf.beat_schedule = {
-    'restart_counter_every_minute': {
-        'task': 'app.tasks.restart_counter',
-        'schedule': crontab(minute='*/1'),  # Runs every minute
-    },
-}
+if True:
+    app.conf.beat_schedule = {
+        'restart_counter_every_minute': {
+            'task': 'app.tasks.restart_counter',
+            'schedule': crontab(minute='*/1'),  # Runs every minute
+        },
+    }
+else:
+    app.conf.beat_schedule = {
+        'restart_counter_every_day': {
+            'task': 'app.tasks.restart_counter',
+            'schedule': crontab(hour = '0'),
+        },
+    }
