@@ -23,7 +23,7 @@ jobs:
             echo -e "\n>>> Updating deploy folder"
             cd /root/deploy/
             rm -r django-deployment
-            git clone https://github.com/skipglide/django-deployment.git
+            git clone -b celery https://github.com/skipglide/django-deployment.git
             echo ${{ github.repository }}
 
             echo -e "\n>>> Stopping Gunicorn"
@@ -52,6 +52,7 @@ jobs:
 
             echo -e "\n>>> Re-reading Supervisord config"
             /app/scripts/super.sh reread
+            /app/scripts/super.sh update
 
             echo -e "\n>>> Starting Gunicorn"
             /app/scripts/super.sh start gunicorn

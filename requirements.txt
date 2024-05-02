@@ -3,3 +3,5 @@ python-dotenv==1.0.0
 whitenoise==6.6.0
 gunicorn==21.2.0
 supervisor==4.2.5
+celery==5.4.0
+redis==5.0.4
