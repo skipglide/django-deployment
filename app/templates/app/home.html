@@ -14,11 +14,11 @@
 
     <article>
         <div style="display: flex; justify-content: center; align-items: center;">
-        {% if post.image %}
+        {% if post.media_type_html == "image" %}
             <img src="{{ post.image.url }}">
-        {% elif post.image %}
+        {% elif post.media_type_html == "video" %}
             <video controls>
-                <source src="{{ post.image.url }}" type="video/mp4">
+                <source src="{{ post.image.url }}">
                 Your browser does not support the video tag.
             </video>
         {% else %}
