@@ -17,7 +17,7 @@
         {% if post.media_type_html == "image" %}
             <img src="{{ post.image.url }}">
         {% elif post.media_type_html == "video" %}
-            <video controls autoplay loop>
+            <video width="100%" height="100%" controls autoplay loop>
                 <source src="{{ post.image.url }}">
                 Your browser does not support the video tag.
             </video>
