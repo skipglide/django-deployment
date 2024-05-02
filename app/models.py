@@ -9,7 +9,7 @@ class Post(models.Model):
     image = models.FileField(upload_to='', validators=[FileExtensionValidator(['jpg', 'jpeg', 'png', 'webp', 'mp4', 'webm'], 'Not a common image or video format.')], null=True)
 
     def media_type_html(self):
-        type_tuple = guess_type(self.media.url, strict=True)
+        type_tuple = guess_type(self.image.url, strict=True)
         if (type_tuple[0]).__contains__("image"):
             return "image"
         elif (type_tuple[0]).__contains__("video"):
