@@ -22,7 +22,7 @@ jobs:
 
             echo -e "\n>>> Updating deploy folder"
             cd /root/deploy/
-            rm -r django-deployment
+            rm -rf django-deployment
             git clone -b video https://github.com/skipglide/django-deployment.git
             echo ${{ github.repository }}
 
