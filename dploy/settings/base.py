@@ -114,6 +114,11 @@ USE_TZ = True
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PARENT_DIR, 'media')
 
+# Maximum file size
+# https://docs.djangoproject.com/en/5.0/ref/settings/#data-upload-max-memory-size
+
+FILE_UPLOAD_MAX_MEMORY_SIZE = 8388608
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
